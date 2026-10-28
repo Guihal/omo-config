@@ -1,0 +1,115 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@latest",
+        "--isolated"
+      ],
+      "exposure": "search"
+    },
+    "web-inspector": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-web-inspector",
+        "--no-save-session",
+        "--cdp-port",
+        "0"
+      ],
+      "exposure": "search"
+    },
+    "browser-inspector": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "browser-inspector-mcp"
+      ],
+      "exposure": "search"
+    },
+    "swatchdog": {
+      "url": "https://swatchdog-connector-970396648818.us-central1.run.app/mcp",
+      "exposure": "search"
+    },
+    "computer-use-linux": {
+      "command": "/home/penis/.bun/bin/bun",
+      "args": [
+        "/usr/projects/cu-scene-proxy/proxy.js"
+      ],
+      "requestTimeoutMs": 60000,
+      "exposure": "search",
+      "directTools": [
+        "doctor",
+        "list_apps",
+        "list_windows",
+        "focused_window",
+        "activate_window",
+        "get_app_state",
+        "screenshot",
+        "click",
+        "perform_action",
+        "set_value",
+        "scroll",
+        "drag",
+        "press_key",
+        "type_text"
+      ],
+      "excludeTools": [
+        "setup_accessibility",
+        "setup_window_targeting",
+        "move_window",
+        "resize_window"
+      ]
+    },
+    "codebase-memory-mcp": {
+      "command": "node",
+      "args": [
+        "/home/penis/plugins/codebase-project-graph/scripts/codebase-memory-mcp.mjs"
+      ],
+      "env": {
+        "PROJECT_GRAPH_ALLOWED_ROOT": "/home/penis"
+      },
+      "requestTimeoutMs": 60000,
+      "exposure": "search",
+      "directTools": [
+        "search_graph",
+        "query_graph",
+        "trace_path",
+        "get_code_snippet",
+        "get_graph_schema",
+        "get_architecture",
+        "search_code",
+        "list_projects",
+        "index_status",
+        "check_index_coverage",
+        "detect_changes"
+      ]
+    },
+    "figma-console": {
+      "command": "/home/penis/.zcode/cli/figma-bridge-mcp.sh",
+      "args": [],
+      "requestTimeoutMs": 360000,
+      "exposure": "search"
+    },
+    "project-graph": {
+      "command": "node",
+      "args": [
+        "/home/penis/plugins/codebase-project-graph/scripts/project-graph-mcp.mjs"
+      ],
+      "env": {
+        "PROJECT_GRAPH_ALLOWED_ROOT": "/home/penis"
+      },
+      "requestTimeoutMs": 120000,
+      "exposure": "search",
+      "directTools": [
+        "graph_status",
+        "graph_overview",
+        "graph_file",
+        "graph_architecture",
+        "graph_architecture_refresh",
+        "graph_architecture_invalidate"
+      ]
+    }
+  }
+}

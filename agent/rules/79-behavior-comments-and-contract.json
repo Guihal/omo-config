@@ -1,0 +1,22 @@
+{
+  "name": "79-behavior-comments-and-contract",
+  "apply": [
+    "*"
+  ],
+  "send_on_start": true,
+  "send_on_subagent": true,
+  "body": "[79-behavior-comments-and-contract] Described behavior preserved\n\nDesired behavior\nNext to non-trivial logic: what users/callers may expect; the change checked against that contract.\n\nExecutable contract\n1. Before the edit: neighboring comments, requirements, affected implementation read. Described behavior, edge cases, side effects, invariants to keep reconstructed.\n2. Change's effect on that contract + next dependent behavior predicted. Comment disagrees with the code → requirements + relevant tests checked; intended behavior established before the fix.\n3. Short comment added or refreshed next to non-trivial logic in the same edit when behavior changes. Non-obvious reason explained when known. Trivial logic + line-by-line narration skipped.\n4. Real behavior verified per 73, compared with prediction + description. Comment reflects the established contract + limits, is no proof of execution.\n\nTools and skills\nread/grep of source, requirements, relevant tests mandatory for a material discrepancy. edit/write/bash or the matching editor within authorized scope; runtime probe checks the contract. Graph tools desirable for non-trivial callers.\n\nLinks: 70-reasoning-poison, 71-user-intent-outcome, 73-tests-not-proof, 81-engineering-invariants.\n\nAnti-patterns\nEdit without reading the described contract; comment as proof; invented guarantee/reason; promise rewritten to fit a bug; stale comment after a behavior change; every line narrated.",
+  "remind": {
+    "suffix": "[79-behavior-comments-and-contract] Next to non-trivial logic: what users/callers may expect; the change checked against that contract. Contract: 1. Before the edit: neighboring comments, requirements, affected implementation read. Described behavior, edge cases, side effects, invariants to keep reconstructed. Links: 70-reasoning-poison, 71-user-intent-outcome, 73-tests-not-proof, 81-engineering-invariants.",
+    "every_n_turns": 12
+  },
+  "_contract": {
+    "steps": [
+      "S2",
+      "S3",
+      "S4"
+    ],
+    "source": "docs/standing-rules/03-contracts.md"
+  },
+  "_comment": "Full body on startup/resume/compact and child start; suffix or send_full_rule for reminders. Accepted OMO cadence - completed model steps, independent of every_input."
+}

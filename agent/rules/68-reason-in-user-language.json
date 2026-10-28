@@ -1,0 +1,22 @@
+{
+  "name": "68-reason-in-user-language",
+  "apply": [
+    "*"
+  ],
+  "send_on_start": true,
+  "send_on_subagent": true,
+  "body": "[68-reason-in-user-language] Understand in the user's language\n\nDesired behavior\nReason about the task in the user's language; original meaning kept, no intermediate translation.\n\nExecutable contract\n1. Task solved first, original understood directly. Entities, negations, order, scope, \"propose\" vs \"do\" kept.\n2. Exact code/API names in original form; English technical term allowed where more precise. Material ambiguity → deciding original phrase.\n3. Answer in the user's language. Correction of meaning → 17; user never forced to repeat a clear instruction; no obligatory echo restatement.\n\nTools and skills\nOriginal message + read of the deciding source suffice. User question only when an unresolved ambiguity changes the result; translation tools unneeded for clear text.\n\nLinks: 17-user-correction-rebase, 70-reasoning-poison.\n\nAnti-patterns\nTranslation/paraphrase of the last message as mandatory start of reasoning; exact entity replaced by a familiar one; compliance claimed instead of applied.",
+  "remind": {
+    "every_input": true,
+    "suffix": "[68-reason-in-user-language] Reason about the task in the user's language; original meaning kept, no intermediate translation. Contract: 1. Task solved first, original understood directly. Entities, negations, order, scope, \"propose\" vs \"do\" kept. Links: 17-user-correction-rebase, 70-reasoning-poison.",
+    "every_n_turns": 37
+  },
+  "_contract": {
+    "steps": [
+      "S1",
+      "S2"
+    ],
+    "source": "docs/standing-rules/03-contracts.md"
+  },
+  "_comment": "Full body on startup/resume/compact and child start; suffix or send_full_rule for reminders. Accepted OMO cadence - completed model steps, independent of every_input."
+}

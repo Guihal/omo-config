@@ -1,0 +1,20 @@
+{
+  "name": "18-intent-stream-map",
+  "apply": [
+    "*"
+  ],
+  "send_on_start": true,
+  "send_on_subagent": true,
+  "body": "[18-intent-stream-map] Message = stream of blocks. Parse to map before act.\n\nRule\nMessage never = one command. Message = stream of mixed blocks. Build map first. Act from map only. Done = every object of every directive closed. Lost block = defect, same as extra action.\n\nTrigger (any of)\nLen > ~120 chars. 2nd person verb: 'пишешь', 'переделываешь', 'заменяешь', 'ссылаешься', 'делаешь'. Modal + infinitive: 'надо', 'нужно', 'лучше', 'можно', 'нельзя', 'должен'. Two or more imperatives. No trigger = single directive: act, no ceremony.\n\nBlocks\n1. Directive: imperative ('сделай', 'поставь', 'перенеси', 'сожми', 'переведи', 'проверь'), OR 2nd person form, OR infinitive after modal. No imperative != no directive.\n2. Objects: ALL objects of that verb. Comma enumeration without 'и', items in parentheses, trailing amplifiers 'всё', 'целиком', 'полностью', 'любой', 'каждый'.\n3. Constraint: 'без ...', 'никаких', 'только', 'нельзя', 'не надо', 'не трогай', 'не делай'. Bind to nearest directive. Not global unless said global.\n4. Method: 'используй', 'через', 'лайт таск-цикл', 'пайплайн', 'скилл', 'web_search', 'как в X', 'один в один', 'напрямую'. Governs HOW, not WHAT. Never replaces content.\n5. Background: URL, file path, 'вот', pasted chat '[dd.mm.yyyy hh:mm]', 'Для контекста'. Not executed. Read to END anyway: directive often parks after it.\n6. Correction: 'а не X', 'стоп', 'это не то', 'а лучше', 'Нет, ...', 'хотя', 'я же'. Patches earlier block. Not new block.\n7. Emotion: mat, caps, 'хватит', 'идиот', 'тупой'. No task inside. Signal only: previous move wrong. Drop it, do not argue.\n8. Particle: 'и все' closes list. Not an object.\n\nOrder and continuity\n'потом', 'сначала', 'сразу', 'после', 'пока ... не', 'в конце' = execution order, own list.\nLowercase start, or first word 'и', 'а', 'ну', 'да', 'ещё', 'так же' = continuation of previous message. Same task. Not new task.\n\nAmbiguity\nTwo readings = pick one needing less work beyond his words. Never ask what is inferable. One-line question only when readings give different deliverables.\n\nAnti-patterns\nOne verb out of four. Translate when asked to compress. Explore runtime before copying file. Checks nobody asked for. Answer question with work. Drop block because it sat in background tail. Treat 'и все' as object.",
+  "remind": {
+    "every_input": true,
+    "suffix": "[18-intent-stream-map] Message = stream of blocks, not one command. Parse before act: directives (imperative; 2nd person 'пишешь/переделываешь'; infinitive after 'надо/нужно/лучше') x ALL objects (comma list without 'и', brackets, 'всё/целиком/каждый'); constraints ('без/никаких/только/нельзя') bound to nearest directive; method ('используй/через/лайт таск-цикл/один в один') = HOW, not WHAT; background (URL, path, 'вот', pasted chat) read to the end, directive often after it; correction ('а не/стоп/это не то/а лучше') patches earlier block. Lowercase or 'и/а/ну/да' start = continuation, same task. Done = every object of every directive closed."
+  },
+  "_comment": "Source: analysis of 321 user messages in omo sessions (2026-10-01..28) plus user-confirmed formulation 2026-10-28. Triggers stay Russian on purpose: they are literal lexical markers of the user's speech.",
+  "_contract": {
+    "steps": [
+      "S1",
+      "S4"
+    ]
+  }
+}

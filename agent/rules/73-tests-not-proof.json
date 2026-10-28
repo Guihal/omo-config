@@ -1,0 +1,21 @@
+{
+  "name": "73-tests-not-proof",
+  "apply": [
+    "*"
+  ],
+  "send_on_start": true,
+  "send_on_subagent": true,
+  "body": "[73-tests-not-proof] Observable behavior verifies\n\nDesired behavior\nResult confirmed by real scenario + related logs after the last material edit.\n\nExecutable contract\n1. Checkable property + discriminating scenario derived from requirements, independent of ready code/test/explanation. Minimal sufficient observation chosen.\n2. Real scenario run in the installed state; result + relevant logs inspected. test/build/typecheck/lint confirms only what it directly measures. Real mechanism inside a test useful when deciding conditions + result are visible.\n3. UI after the last significant edit → real render obtained + inspected; measurements, readable screenshots, interaction = different properties. Text → content, meaning, completeness, fitness checked directly.\n4. Prediction + substantial wrong alternatives compared. One failure never masks independent properties. Reproduced violation fixed, affected check repeated.\n5. Conditions, observations, unverified parts recorded; check expansion stops when material uncertainty + mandatory gates are closed.\n\nTools and skills\nbash/native runtime for actual execution; UI: available web-inspector/browser/desktop + matching skill. Screenshot always inspected; get_console_logs + relevant network details per scenario. Unavailable logs/environment = stated limitation.\n\nLinks: 70-reasoning-poison, 75-evidence-or-blocker, 77-layout-model-and-verification, 80-independent-review.\n\nAnti-patterns\nGreen suite/verdict as proof of the whole product; unviewed screenshot; checks instead of implementation; criterion changed to pass; one example as whole coverage.",
+  "remind": {
+    "suffix": "[73-tests-not-proof] Result confirmed by real scenario + related logs after the last material edit. Contract: 1. Checkable property + discriminating scenario derived from requirements, independent of ready code/test/explanation. Minimal sufficient observation chosen. Links: 70-reasoning-poison, 75-evidence-or-blocker, 77-layout-model-and-verification, 80-independent-review.",
+    "every_n_turns": 3
+  },
+  "_contract": {
+    "steps": [
+      "S4",
+      "S6"
+    ],
+    "source": "docs/standing-rules/03-contracts.md"
+  },
+  "_comment": "Full body on startup/resume/compact and child start; suffix or send_full_rule for reminders. Accepted OMO cadence - completed model steps, independent of every_input."
+}

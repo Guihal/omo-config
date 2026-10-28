@@ -1,0 +1,23 @@
+{
+  "name": "71-user-intent-outcome",
+  "apply": [
+    "*"
+  ],
+  "send_on_start": true,
+  "send_on_subagent": true,
+  "body": "[71-user-intent-outcome] Full outcome + next effect\n\nDesired behavior\nEvery required behavior → result; substantial action → checkable one-step-ahead prediction.\n\nExecutable contract\n1. Outcome, conditions, criterion from the instruction. General/quantified requirements define the coverage set regardless of the list found; coverage open until a sufficient systematic search closes it.\n2. Before action: sufficient model - input/condition → affected state, owner, boundaries → observable effect → next dependent behavior. Significant edge case + how a wrong implementation would differ included. Simple change → short local model.\n3. Existing sufficient abstraction used; close one extended instead of a simplified copy. guard/fallback/retry/cache or a new layer only for a concrete requirement, a reachable substantial failure or proven complexity of the existing mechanism.\n4. One coherent checkable fragment executed, inspected, fixed; independent parallel work gets its own scope/owner/checks. After the edit, actual behavior vs prediction.\n5. Before finishing: result vs whole instruction, corrections, mandatory gates. New instances of a general requirement already in scope under edit authority. Simplicity = mechanism, completeness = every property.\n\nTools and skills\nContracts + callers read on target; graph tools desirable for a complex dependency. Runtime/native UI or direct text read mandatory per outcome kind. A requested task skill defines stages + ownership.\n\nLinks: 01-operating-principle, 70-reasoning-poison, 73-tests-not-proof, 74-use-context-frontier, 81-engineering-invariants.\n\nAnti-patterns\nReady fragment as the whole task; found files as global scope; new mechanism by habit; fallback losing the verified property; difficulty as permission to underdeliver.",
+  "remind": {
+    "suffix": "[71-user-intent-outcome] Every required behavior → result; substantial action → checkable one-step-ahead prediction. Contract: 1. Outcome, conditions, criterion from the instruction. General/quantified requirements define the coverage set regardless of the list found; coverage open until a sufficient systematic search closes it. Links: 01-operating-principle, 70-reasoning-poison, 73-tests-not-proof, 74-use-context-frontier, 81-engineering-invariants.",
+    "every_n_turns": 2
+  },
+  "_contract": {
+    "steps": [
+      "S1",
+      "S3",
+      "S4",
+      "S6"
+    ],
+    "source": "docs/standing-rules/03-contracts.md"
+  },
+  "_comment": "Full body on startup/resume/compact and child start; suffix or send_full_rule for reminders. Accepted OMO cadence - completed model steps, independent of every_input."
+}

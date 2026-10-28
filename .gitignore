@@ -1,0 +1,54 @@
+# Секреты и идентичности
+agent/auth.json
+agent/config-identity.key
+agent/mcp-auth/
+*.bak
+*.bak.*
+omo.jsonc.bak*
+
+# Вложенные репозитории памяти агентов (у каждого свой git)
+memory/agents/*/repo/
+
+# Установленное окружение и рантайм (не исходники)
+agent/runtime/
+agent/extensions/
+agent/cache/
+agent/logs/
+agent/sessions/
+agent/omo-senpi/
+agent/OmO-debug.log
+agent/task-state/
+agent/control-task-state/
+agent/agent-state/
+cache/
+lsp-daemon/
+memory/transient-runs/
+
+# Рантайм-состояние агентов: транскрипты, прогоны рефлексии, очереди фактов
+memory/agents/*/runtime/
+
+# Рантайм-состояние омо: сокеты, шлюз, крэши, планировщик, задачи, tmp
+agent/gateway/
+agent/rpc/
+agent/rpc-host-daemon/
+agent/process-crashes/
+agent/schedule/runners/
+agent/tasks/
+agent/tmp/
+agent/harness-detect-cache.json
+agent/runtime-notice.json
+memory/runtime/
+**/*.lock
+
+# Секреты и служебные файлы
+# agent/models.json содержит API-ключи провайдеров в открытом виде
+agent/models.json
+**/*.sock.secret
+**/*.sqlite
+**/*.sqlite-shm
+**/*.sqlite-wal
+*.pem
+**/*credentials*.json
+**/secrets/
+**/.env
+**/.env.*

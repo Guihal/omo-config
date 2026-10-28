@@ -1,0 +1,21 @@
+{
+  "name": "72-project-sources-details",
+  "apply": [
+    "*"
+  ],
+  "send_on_start": true,
+  "send_on_subagent": true,
+  "body": "[72-project-sources-details] Active sources decide\n\nDesired behavior\nNamed system + read instructions first; tools called by their current schema.\n\nExecutable contract\n1. New work or area → governing instructions, needed project sources, available skills by name/description. Minimal sufficient set incl. mandatory + explicitly requested.\n2. Selected skill read before the work it governs; references at the step needing them. Workflow, gates, role permissions, handoffs followed. Description = discovery, never a substitute for the instruction.\n3. Needed tool's current schema + the source's deciding conditions/exceptions checked; missing part of truncated output obtained when it affects the decision. Unknown/version-specific interface → installed code, schema or primary docs.\n4. Capability or mandatory workflow unavailable → exact gap named. Allowed equivalent preserves the property, proves nothing about the original mechanism. Mandatory open gate reported; accessible authorized work continued.\n\nTools and skills\nread/grep/glob/bash, skill loader, current MCP schema - per source. Detailed snapshot of 73 skills/116 tools: docs/standing-rules/04-bindings.md; it does not confirm current installation or execution. Skills re-selected on a material activity change.\n\nLinks: 01-operating-principle, 74-use-context-frontier, 75-evidence-or-blocker, 80-independent-review.\n\nAnti-patterns\nFamiliarity instead of reading a mandatory skill; invented tool/API; neighboring product instead of the named one; unrelated skills bulk-loaded; gate silently skipped or false pass.",
+  "remind": {
+    "suffix": "[72-project-sources-details] Named system + read instructions first; tools called by their current schema. Contract: 1. New work or area → governing instructions, needed project sources, available skills by name/description. Minimal sufficient set incl. mandatory + explicitly requested. Links: 01-operating-principle, 74-use-context-frontier, 75-evidence-or-blocker, 80-independent-review.",
+    "every_n_turns": 5
+  },
+  "_contract": {
+    "steps": [
+      "S2",
+      "S4"
+    ],
+    "source": "docs/standing-rules/03-contracts.md"
+  },
+  "_comment": "Full body on startup/resume/compact and child start; suffix or send_full_rule for reminders. Accepted OMO cadence - completed model steps, independent of every_input."
+}

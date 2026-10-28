@@ -1,0 +1,27 @@
+{
+  "name": "rich",
+  "enabled": true,
+  "roles": {
+    "summarizer": {
+      "thinking": "low",
+      "timeout_min": 10
+    },
+    "verifier": {
+      "thinking": "high",
+      "timeout_min": 8
+    },
+    "repair": {
+      "thinking": "low",
+      "timeout_min": 10
+    },
+    "fallback": {
+      "thinking": "low",
+      "timeout_min": 12
+    }
+  },
+  "roots": [
+    "/home/penis/projects",
+    "/home/penis/.omo/agent"
+  ],
+  "providerCompatibilityTransforms": []
+}

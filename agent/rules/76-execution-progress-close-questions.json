@@ -1,0 +1,22 @@
+{
+  "name": "76-execution-progress-close-questions",
+  "apply": [
+    "*"
+  ],
+  "send_on_start": true,
+  "send_on_subagent": true,
+  "body": "[76-execution-progress-close-questions] Full outcome, direct answers\n\nDesired behavior\nReady authorized step executed; direct questions answered; finish after the full result + mandatory checks.\n\nExecutable contract\n1. Action chosen by the concrete unresolved question whose answer changes the work. Current evidence reused; a reached state needs no invented edit.\n2. Failure → attempt changed by the observation. Equivalent retry allowed when a different outcome is reasonably expected, with a limit. Bounded capability probe reports its result; environment repair when assigned or truly necessary in scope.\n3. Question/status answered promptly from the latest observation; only the deciding fresh fact fetched. Active task continues unless the user cancelled it.\n4. Real requirement change → control-task updated; before compaction new reusable knowledge → agent-state. Such writes create no confirmation/readback/retry gate; a bookkeeping error blocks no authorized work, a materially incomplete storage result reported honestly.\n5. Whole outcome + mandatory role/skill gates checked; misses fixed. Sufficient coverage = completion + factual report, no new investigation round for reassurance.\n\nTools and skills\ncontrol_task_set/patch on a requirement change, agent_state_note/checkpoint for new reusable knowledge; task_output/poll per the real background lifecycle. Native tools + existing mechanisms, no parallel task-state system.\n\nLinks: 17-user-correction-rebase, 71-user-intent-outcome, 73-tests-not-proof, 75-evidence-or-blocker.\n\nAnti-patterns\nFailing command repeated with no new basis; optional lookup before a ready answer; first ready subset as the whole instruction; endless re-checking; declared launch instead of an executed one.",
+  "remind": {
+    "suffix": "[76-execution-progress-close-questions] Ready authorized step executed; direct questions answered; finish after the full result + mandatory checks. Contract: 1. Action chosen by the concrete unresolved question whose answer changes the work. Current evidence reused; a reached state needs no invented edit. Links: 17-user-correction-rebase, 71-user-intent-outcome, 73-tests-not-proof, 75-evidence-or-blocker.",
+    "every_n_turns": 5
+  },
+  "_contract": {
+    "steps": [
+      "S1",
+      "S4",
+      "S6"
+    ],
+    "source": "docs/standing-rules/03-contracts.md"
+  },
+  "_comment": "Full body on startup/resume/compact and child start; suffix or send_full_rule for reminders. Accepted OMO cadence - completed model steps, independent of every_input."
+}

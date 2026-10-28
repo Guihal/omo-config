@@ -1,0 +1,739 @@
+{
+  "version": 1,
+  "source": "/home/penis/.pi/agent",
+  "roles": {
+    "claude-code-writer": {
+      "name": "claude-code-writer",
+      "runner": {
+        "type": "external-cli",
+        "adapter": "claude-code-writer",
+        "command": "claude",
+        "promptDelivery": "stdin"
+      },
+      "localName": "claude-code-writer",
+      "description": "Explicit file-writing Claude Code CLI mode; requires local authentication and trusted user settings/hooks",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": false,
+      "inheritSkills": false,
+      "defaultAsync": true,
+      "acceptanceRole": "writer",
+      "source": "builtin",
+      "filePath": "/home/penis/.pi/agent/npm/node_modules/pi-subagents/agents/claude-code-writer.md",
+      "defaultProgress": false,
+      "interactive": false,
+      "externalPrompt": "Prerequisites: the local Claude Code CLI is authenticated, and the operator trusts its user-level settings and hooks. Use only the code-owned Read, Write, Edit, Glob, and Grep tools. Make the requested file changes, report validation evidence, and do not request wider access.",
+      "tools": [
+        "*"
+      ]
+    },
+    "claude-code": {
+      "name": "claude-code",
+      "runner": {
+        "type": "external-cli",
+        "adapter": "claude-code",
+        "command": "claude",
+        "promptDelivery": "stdin"
+      },
+      "localName": "claude-code",
+      "description": "Read-only Claude Code CLI analysis; requires local authentication and trusted user settings/hooks",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": false,
+      "inheritSkills": false,
+      "defaultAsync": true,
+      "source": "builtin",
+      "filePath": "/home/penis/.pi/agent/npm/node_modules/pi-subagents/agents/claude-code.md",
+      "defaultProgress": false,
+      "interactive": false,
+      "externalPrompt": "Prerequisites: the local Claude Code CLI is authenticated, and the operator trusts its user-level settings and hooks. Analyze only the supplied handoff in no-tools mode. Return a concise final answer with evidence. Do not edit files or request wider access.",
+      "tools": [
+        "*"
+      ]
+    },
+    "codex-exec-writer": {
+      "name": "codex-exec-writer",
+      "runner": {
+        "type": "external-cli",
+        "adapter": "codex-exec-writer",
+        "command": "codex",
+        "promptDelivery": "stdin"
+      },
+      "localName": "codex-exec-writer",
+      "description": "Explicit workspace-writing one-shot execution through the installed Codex CLI",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": false,
+      "inheritSkills": false,
+      "defaultAsync": true,
+      "acceptanceRole": "writer",
+      "source": "builtin",
+      "filePath": "/home/penis/.pi/agent/npm/node_modules/pi-subagents/agents/codex-exec-writer.md",
+      "defaultProgress": false,
+      "interactive": false,
+      "externalPrompt": "Use the code-owned workspace-write sandbox to make the requested changes. Return a concise final answer with validation evidence. Do not request wider access or additional writable roots.",
+      "tools": [
+        "*"
+      ]
+    },
+    "codex-exec": {
+      "name": "codex-exec",
+      "runner": {
+        "type": "external-cli",
+        "adapter": "codex-exec",
+        "command": "codex",
+        "promptDelivery": "stdin"
+      },
+      "localName": "codex-exec",
+      "description": "Read-only one-shot analysis through the installed Codex CLI",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": false,
+      "inheritSkills": false,
+      "defaultAsync": true,
+      "source": "builtin",
+      "filePath": "/home/penis/.pi/agent/npm/node_modules/pi-subagents/agents/codex-exec.md",
+      "defaultProgress": false,
+      "interactive": false,
+      "externalPrompt": "Analyze the task in read-only mode. Return a concise final answer with evidence. Do not edit files or request wider access.",
+      "tools": [
+        "*"
+      ]
+    },
+    "cursor-agent-writer": {
+      "name": "cursor-agent-writer",
+      "runner": {
+        "type": "external-cli",
+        "adapter": "cursor-agent-writer",
+        "command": "cursor-agent"
+      },
+      "localName": "cursor-agent-writer",
+      "description": "Explicit workspace-writing one-shot execution through the installed Cursor CLI",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": false,
+      "inheritSkills": false,
+      "defaultAsync": true,
+      "acceptanceRole": "writer",
+      "source": "builtin",
+      "filePath": "/home/penis/.pi/agent/npm/node_modules/pi-subagents/agents/cursor-agent-writer.md",
+      "defaultProgress": false,
+      "interactive": false,
+      "externalPrompt": "Use the code-owned sandbox to make the requested workspace changes. Return a concise final answer with validation evidence. Do not request wider access or additional workspace roots.",
+      "tools": [
+        "*"
+      ]
+    },
+    "cursor-agent": {
+      "name": "cursor-agent",
+      "runner": {
+        "type": "external-cli",
+        "adapter": "cursor-agent",
+        "command": "cursor-agent"
+      },
+      "localName": "cursor-agent",
+      "description": "Read-only one-shot analysis through the installed Cursor CLI",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": false,
+      "inheritSkills": false,
+      "defaultAsync": true,
+      "source": "builtin",
+      "filePath": "/home/penis/.pi/agent/npm/node_modules/pi-subagents/agents/cursor-agent.md",
+      "defaultProgress": false,
+      "interactive": false,
+      "externalPrompt": "Analyze the task in read-only ask mode. Return a concise final answer with evidence. Do not edit files or request wider access.",
+      "tools": [
+        "*"
+      ]
+    },
+    "delegate": {
+      "name": "delegate",
+      "localName": "delegate",
+      "description": "Lightweight subagent that inherits the parent model with no default reads",
+      "tools": [
+        "*"
+      ],
+      "systemPromptMode": "append",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": false,
+      "inheritSkills": false,
+      "source": "builtin",
+      "filePath": "/home/penis/.pi/agent/npm/node_modules/pi-subagents/agents/delegate.md",
+      "defaultProgress": false,
+      "interactive": false
+    },
+    "evidence-auditor": {
+      "name": "evidence-auditor",
+      "localName": "evidence-auditor",
+      "description": "Independent evidence reviewer for checking whether important research claims are supported by their sources",
+      "tools": [
+        "*"
+      ],
+      "thinking": "high",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": false,
+      "inheritSkills": false,
+      "acceptanceRole": "read-only",
+      "source": "builtin",
+      "filePath": "/home/penis/.pi/agent/npm/node_modules/pi-subagents/agents/evidence-auditor.md",
+      "defaultProgress": false,
+      "interactive": false
+    },
+    "oracle": {
+      "name": "oracle",
+      "localName": "oracle",
+      "description": "High-context decision-consistency oracle that protects inherited state and prevents drift",
+      "aliases": [
+        "advisor"
+      ],
+      "tools": [
+        "*"
+      ],
+      "thinking": "high",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": false,
+      "inheritSkills": false,
+      "defaultContext": "fork",
+      "acceptanceRole": "read-only",
+      "source": "builtin",
+      "filePath": "/home/penis/.pi/agent/npm/node_modules/pi-subagents/agents/oracle.md",
+      "defaultProgress": false,
+      "interactive": false
+    },
+    "researcher": {
+      "name": "researcher",
+      "localName": "researcher",
+      "description": "Autonomous research brief generator adapted to the local environment. Search-first via SearXNG, fetch URLs through web_fetch, then synthesize a concise cited brief. Shadows the pi-subagents builtin `researcher` because the builtin's tools (web_search / fetch_content / get_search_content / intercom) are absent here; honors project rules — search before stating present-day facts, URL on every claim, output language follows the task language (Russian is the user default).",
+      "tools": [
+        "*"
+      ],
+      "model": "inherit",
+      "thinking": "low",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": true,
+      "inheritSkills": false,
+      "defaultContext": "fresh",
+      "acceptanceRole": "read-only",
+      "source": "user",
+      "filePath": "/home/penis/.pi/agent/agents/researcher.md",
+      "discoveryPriority": 0,
+      "defaultProgress": false,
+      "interactive": false
+    },
+    "reviewer": {
+      "name": "reviewer",
+      "localName": "reviewer",
+      "description": "Versatile review specialist for code diffs, plans, proposed solutions, codebase health, and PR/issue validation",
+      "tools": [
+        "*"
+      ],
+      "thinking": "high",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": false,
+      "inheritSkills": false,
+      "acceptanceRole": "read-only",
+      "source": "builtin",
+      "filePath": "/home/penis/.pi/agent/npm/node_modules/pi-subagents/agents/reviewer.md",
+      "defaultProgress": false,
+      "interactive": false
+    },
+    "scout": {
+      "name": "scout",
+      "localName": "scout",
+      "description": "Fast codebase recon that returns compressed context for handoff",
+      "tools": [
+        "*"
+      ],
+      "thinking": "low",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": false,
+      "inheritSkills": false,
+      "source": "builtin",
+      "filePath": "/home/penis/.pi/agent/npm/node_modules/pi-subagents/agents/scout.md",
+      "output": "context.md",
+      "defaultProgress": true,
+      "interactive": false
+    },
+    "worker": {
+      "name": "worker",
+      "localName": "worker",
+      "description": "OMO Native worker; isolated pipeline role with scoped ownership.",
+      "tools": [
+        "*"
+      ],
+      "allowNestedSubagents": false,
+      "model": "inherit",
+      "thinking": "low",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": true,
+      "inheritSkills": false,
+      "defaultContext": "fresh",
+      "defaultAsync": true,
+      "defaultAcceptance": {
+        "level": "none",
+        "reason": "Role output is validated by the parent task/design workflow."
+      },
+      "source": "user",
+      "filePath": "/home/penis/.pi/agent/agents/worker.md",
+      "discoveryPriority": 0,
+      "defaultProgress": false,
+      "interactive": false
+    },
+    "architect": {
+      "name": "architect",
+      "localName": "architect",
+      "description": "Architecture-review specialist and mandatory plan-gate reviewer for complex tasks. Reviews architectural soundness — patterns, config boundaries, modularity, long-term maintainability. Read-only: returns a severity-gated MD verdict, does not write files, does not spawn nested subagents. A complex `task` plan requires both `architect` and `critic` signatures. Output contract matches `critic`: MD block with ok / phase / feedback / additional; rule-name prefix `arch-` for cross-reviewer dedupe.",
+      "tools": [
+        "*"
+      ],
+      "model": "inherit",
+      "thinking": "low",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": true,
+      "inheritSkills": false,
+      "defaultContext": "fresh",
+      "acceptanceRole": "read-only",
+      "source": "user",
+      "filePath": "/home/penis/.pi/agent/agents/architect.md",
+      "discoveryPriority": 0,
+      "defaultProgress": false,
+      "interactive": false
+    },
+    "auditor": {
+      "name": "auditor",
+      "localName": "auditor",
+      "description": "System-constitution Auditor: read-only Tier-2 gate that checks WHOLE-PRODUCT invariant wholeness and escape-hatch integrity, orthogonal to Teamlead-strategic (which checks meta-goal drift). Runs at STRATEGIC_REVIEW_EVERY cadence (every 3 committed packets) and once more at wave-end as the terminal Tier-2 check. Polices the split-scope gap: a rule authored one packet AFTER the violating code never shows up as a '+' line in any single diff, so per-packet gates miss it. The Auditor reads the WHOLE source + every INVARIANT: clause + the defect ledger, never the diff. Invoked by the Operator skill.",
+      "tools": [
+        "*"
+      ],
+      "model": "inherit",
+      "thinking": "low",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": true,
+      "inheritSkills": false,
+      "defaultContext": "fresh",
+      "acceptanceRole": "read-only",
+      "source": "user",
+      "filePath": "/home/penis/.pi/agent/agents/auditor.md",
+      "discoveryPriority": 0,
+      "skills": [
+        "[ui-audit",
+        "lost-pixel]"
+      ],
+      "defaultProgress": false,
+      "interactive": false
+    },
+    "constitution-reviewer": {
+      "name": "constitution-reviewer",
+      "localName": "constitution-reviewer",
+      "description": "System-constitution Reviewer: read-only double-gate over ONE committed packet diff — structural/spec alignment (former architect) + rule-violation/correctness (former critic) — emitting ONE JSON verdict with fix_target routing (impl|spec|both|escalate). Invoked by the Operator skill after the Executor commits a packet. NOT for RLM-cycle plan review — use the `critic` subagent for that.",
+      "tools": [
+        "*"
+      ],
+      "model": "inherit",
+      "thinking": "low",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": true,
+      "inheritSkills": false,
+      "defaultContext": "fresh",
+      "acceptanceRole": "read-only",
+      "source": "user",
+      "filePath": "/home/penis/.pi/agent/agents/constitution-reviewer.md",
+      "discoveryPriority": 0,
+      "skills": [
+        "[ui-audit",
+        "lost-pixel]"
+      ],
+      "defaultProgress": false,
+      "interactive": false
+    },
+    "critic": {
+      "name": "critic",
+      "localName": "critic",
+      "description": "OMO Native critic; isolated pipeline role with scoped ownership.",
+      "tools": [
+        "*"
+      ],
+      "allowNestedSubagents": false,
+      "model": "inherit",
+      "thinking": "high",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": true,
+      "inheritSkills": false,
+      "defaultContext": "fresh",
+      "defaultAsync": true,
+      "defaultAcceptance": {
+        "level": "none",
+        "reason": "Role output is validated by the parent task/design workflow."
+      },
+      "source": "user",
+      "filePath": "/home/penis/.pi/agent/agents/critic.md",
+      "discoveryPriority": 0,
+      "defaultProgress": false,
+      "interactive": false
+    },
+    "design-critic": {
+      "name": "design-critic",
+      "localName": "design-critic",
+      "description": "Fresh-context read-only adversarial critic of the design-cycle implementation. Independently inspects actual Figma screenshots/structure and challenges product fit, hierarchy, interaction states, visual-language fidelity, design-system existence and reuse, canvas topology, viewport semantics, semantic naming, responsive intent, accessibility and overdesign. REPEATABLE gate: a fresh instance with no previous-verdict history re-reviews after every substantive repair.",
+      "tools": [
+        "*"
+      ],
+      "allowNestedSubagents": false,
+      "model": "inherit",
+      "thinking": "high",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": true,
+      "inheritSkills": false,
+      "defaultContext": "fresh",
+      "defaultAsync": true,
+      "defaultAcceptance": {
+        "level": "none",
+        "reason": "Role output is validated by the parent task/design workflow."
+      },
+      "source": "user",
+      "filePath": "/home/penis/.pi/agent/agents/design-critic.md",
+      "discoveryPriority": 0,
+      "defaultProgress": false,
+      "interactive": false
+    },
+    "design-product-validator": {
+      "name": "design-product-validator",
+      "localName": "design-product-validator",
+      "description": "Independent fresh-context FINAL user-outcome gate of the design cycle: answers \"did the user actually get the design result they needed?\" — a black-box judge of the delivered Figma end state, NOT a second implementation reviewer (that is design-critic). Fixes essential user outcomes from the BRIEF BEFORE inspecting Figma; uses MANIFEST only as locator metadata. Receives ONLY BRIEF + MANIFEST.",
+      "tools": [
+        "*"
+      ],
+      "allowNestedSubagents": false,
+      "model": "inherit",
+      "thinking": "high",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": true,
+      "inheritSkills": false,
+      "defaultContext": "fresh",
+      "defaultAsync": true,
+      "defaultAcceptance": {
+        "level": "none",
+        "reason": "Role output is validated by the parent task/design workflow."
+      },
+      "source": "user",
+      "filePath": "/home/penis/.pi/agent/agents/design-product-validator.md",
+      "discoveryPriority": 0,
+      "defaultProgress": false,
+      "interactive": false
+    },
+    "design-researcher": {
+      "name": "design-researcher",
+      "localName": "design-researcher",
+      "description": "Fresh-context read-only researcher for the design cycle. Reconstructs product requirements and the existing Figma visual/design-system language from the canonical BRIEF, repository evidence, Figma nodes/screenshots and only-needed web sources. Never designs the final screen and never mutates Figma or the repo.",
+      "tools": [
+        "*"
+      ],
+      "allowNestedSubagents": false,
+      "model": "inherit",
+      "thinking": "high",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": true,
+      "inheritSkills": false,
+      "defaultContext": "fresh",
+      "defaultAsync": true,
+      "defaultAcceptance": {
+        "level": "none",
+        "reason": "Role output is validated by the parent task/design workflow."
+      },
+      "source": "user",
+      "filePath": "/home/penis/.pi/agent/agents/design-researcher.md",
+      "discoveryPriority": 0,
+      "defaultProgress": false,
+      "interactive": false
+    },
+    "design-verifier": {
+      "name": "design-verifier",
+      "localName": "design-verifier",
+      "description": "Fresh-context read-only repeatable FINAL gate for the design cycle. Verifies the delivered Figma end state as a whole against the BRIEF and canonical SPEC: target completeness, flows/states, cross-screen consistency, protected scope, design-system use, responsive contract, accessibility evidence and handoff readiness.",
+      "tools": [
+        "*"
+      ],
+      "allowNestedSubagents": false,
+      "model": "inherit",
+      "thinking": "high",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": true,
+      "inheritSkills": false,
+      "defaultContext": "fresh",
+      "defaultAsync": true,
+      "defaultAcceptance": {
+        "level": "none",
+        "reason": "Role output is validated by the parent task/design workflow."
+      },
+      "source": "user",
+      "filePath": "/home/penis/.pi/agent/agents/design-verifier.md",
+      "discoveryPriority": 0,
+      "defaultProgress": false,
+      "interactive": false
+    },
+    "design-worker": {
+      "name": "design-worker",
+      "localName": "design-worker",
+      "description": "Fresh-context sole Figma writer for the design cycle. Reconciles the current declared Figma targets to the canonical BRIEF/CONTEXT/SPEC/MANIFEST, reusing existing tokens/components first, protecting reference nodes, and validating every mutation with fresh screenshots. Mutates ONLY the Figma document; never edits product code or canonical design artifacts (BRIEF/CONTEXT/SPEC/MANIFEST).",
+      "tools": [
+        "*"
+      ],
+      "allowNestedSubagents": false,
+      "model": "inherit",
+      "thinking": "high",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": true,
+      "inheritSkills": false,
+      "defaultContext": "fresh",
+      "defaultAsync": true,
+      "defaultAcceptance": {
+        "level": "none",
+        "reason": "Role output is validated by the parent task/design workflow."
+      },
+      "source": "user",
+      "filePath": "/home/penis/.pi/agent/agents/design-worker.md",
+      "discoveryPriority": 0,
+      "defaultProgress": false,
+      "interactive": false
+    },
+    "escalation-advisor": {
+      "name": "escalation-advisor",
+      "localName": "escalation-advisor",
+      "description": "Read-only escalation advisor invoked by the Operator skill BEFORE escalating to the user at a STOP condition. Analyzes escape routes and outputs a strict markdown contract (variants + Wait for user decision + Advice summary + optional Additional). Variants classified as destructive/non-destructive and mutates_functionality true/false. Fresh-context (does not inherit operator dialog). Read-only.",
+      "tools": [
+        "*"
+      ],
+      "model": "inherit",
+      "thinking": "low",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": true,
+      "inheritSkills": false,
+      "defaultContext": "fresh",
+      "acceptanceRole": "read-only",
+      "source": "user",
+      "filePath": "/home/penis/.pi/agent/agents/escalation-advisor.md",
+      "discoveryPriority": 0,
+      "skills": [
+        "[ui-audit",
+        "lost-pixel]"
+      ],
+      "defaultProgress": false,
+      "interactive": false
+    },
+    "implementation-critic": {
+      "name": "implementation-critic",
+      "localName": "implementation-critic",
+      "description": "OMO Native implementation-critic; isolated pipeline role with scoped ownership.",
+      "tools": [
+        "*"
+      ],
+      "allowNestedSubagents": false,
+      "model": "inherit",
+      "thinking": "high",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": true,
+      "inheritSkills": false,
+      "defaultContext": "fresh",
+      "defaultAsync": true,
+      "defaultAcceptance": {
+        "level": "none",
+        "reason": "Role output is validated by the parent task/design workflow."
+      },
+      "source": "user",
+      "filePath": "/home/penis/.pi/agent/agents/implementation-critic.md",
+      "discoveryPriority": 0,
+      "defaultProgress": false,
+      "interactive": false
+    },
+    "planner": {
+      "name": "planner",
+      "localName": "planner",
+      "description": "OMO Native planner; isolated pipeline role with scoped ownership.",
+      "tools": [
+        "*"
+      ],
+      "allowNestedSubagents": false,
+      "model": "inherit",
+      "thinking": "low",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": true,
+      "inheritSkills": false,
+      "defaultContext": "fresh",
+      "defaultAsync": true,
+      "defaultAcceptance": {
+        "level": "none",
+        "reason": "Role output is validated by the parent task/design workflow."
+      },
+      "source": "user",
+      "filePath": "/home/penis/.pi/agent/agents/planner.md",
+      "discoveryPriority": 0,
+      "defaultProgress": false,
+      "interactive": false
+    },
+    "decomposer": {
+      "name": "decomposer",
+      "localName": "decomposer",
+      "description": "OMO Native decomposer; isolated pipeline role with scoped ownership.",
+      "tools": [
+        "*"
+      ],
+      "allowNestedSubagents": false,
+      "model": "inherit",
+      "thinking": "low",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": true,
+      "inheritSkills": false,
+      "defaultContext": "fresh",
+      "defaultAsync": true,
+      "defaultAcceptance": {
+        "level": "none",
+        "reason": "Role output is validated by the parent task/design workflow."
+      },
+      "source": "user",
+      "filePath": "/home/penis/.pi/agent/agents/decomposer.md",
+      "discoveryPriority": 0,
+      "defaultProgress": false,
+      "interactive": false
+    },
+    "preplan-auditor": {
+      "name": "preplan-auditor",
+      "localName": "preplan-auditor",
+      "description": "Preplan evidence-gathering role for standard/complex tasks. Produces substrate and mechanism artifacts — never the final plan. Read-only plus preplan_probe; returns artifact body to the parent, which persists it and calls task_record_preplan. Invoked by the orchestrator before the plan loop opens.",
+      "tools": [
+        "*"
+      ],
+      "model": "inherit",
+      "thinking": "low",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": true,
+      "inheritSkills": false,
+      "defaultContext": "fresh",
+      "acceptanceRole": "read-only",
+      "source": "user",
+      "filePath": "/home/penis/.pi/agent/agents/preplan-auditor.md",
+      "discoveryPriority": 0,
+      "defaultProgress": false,
+      "interactive": false
+    },
+    "product-validator": {
+      "name": "product-validator",
+      "localName": "product-validator",
+      "description": "OMO Native product-validator; isolated pipeline role with scoped ownership.",
+      "tools": [
+        "*"
+      ],
+      "allowNestedSubagents": false,
+      "model": "inherit",
+      "thinking": "low",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": true,
+      "inheritSkills": false,
+      "defaultContext": "fresh",
+      "defaultAsync": true,
+      "defaultAcceptance": {
+        "level": "none",
+        "reason": "Role output is validated by the parent task/design workflow."
+      },
+      "source": "user",
+      "filePath": "/home/penis/.pi/agent/agents/product-validator.md",
+      "discoveryPriority": 0,
+      "defaultProgress": false,
+      "interactive": false
+    },
+    "task-researcher": {
+      "name": "task-researcher",
+      "localName": "task-researcher",
+      "description": "Plan-review specialist for the `task` RLM-cycle skill. Plan-loop reviewer that surfaces better approaches / libraries / best practices / known pitfalls in the current plan draft. Project-read-only: writes only its parent-supplied VERDICT_FILE, does not edit project files, does not spawn nested subagents. Launched in parallel mode alongside `critic` for non-trivial plans (depth=standard|complex). Output contract matches `critic`: MD block with ok / phase / feedback / additional; rule-name prefix `tres-` for cross-reviewer dedupe.",
+      "tools": [
+        "*"
+      ],
+      "model": "inherit",
+      "thinking": "low",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": true,
+      "inheritSkills": false,
+      "defaultContext": "fresh",
+      "acceptanceRole": "read-only",
+      "source": "user",
+      "filePath": "/home/penis/.pi/agent/agents/task-researcher.md",
+      "discoveryPriority": 0,
+      "defaultProgress": false,
+      "interactive": false
+    },
+    "teamlead": {
+      "name": "teamlead",
+      "localName": "teamlead",
+      "description": "System-constitution Teamlead: read-only gate that answers \"IS THE TASK DONE?\" by running the final product against the task's meta-goal, not by reading the diff. Its scope is the whole task — \"out of scope\" does not exist for it. Invoked by the Operator skill as the product-level leg of the per-packet triple gate (Reviewer + Teamlead + Tier-1 deterministic), and periodically for strategic drift review.",
+      "tools": [
+        "*"
+      ],
+      "model": "inherit",
+      "thinking": "low",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": true,
+      "inheritSkills": false,
+      "defaultContext": "fresh",
+      "acceptanceRole": "read-only",
+      "source": "user",
+      "filePath": "/home/penis/.pi/agent/agents/teamlead.md",
+      "discoveryPriority": 0,
+      "skills": [
+        "[ui-audit",
+        "lost-pixel]"
+      ],
+      "defaultProgress": false,
+      "interactive": false
+    },
+    "repair": {
+      "name": "repair",
+      "localName": "repair",
+      "description": "OMO Native recovery author; explicit repair-model route and bounded source ownership.",
+      "tools": [
+        "*"
+      ],
+      "allowNestedSubagents": false,
+      "model": "inherit",
+      "thinking": "high",
+      "systemPromptMode": "replace",
+      "inheritProjectContext": true,
+      "inheritGlobalContext": true,
+      "inheritSkills": false,
+      "defaultContext": "fresh",
+      "defaultAsync": true,
+      "defaultAcceptance": {
+        "level": "none",
+        "reason": "Role output is validated by the parent task/design workflow."
+      },
+      "source": "user",
+      "filePath": "/home/penis/.omo/omo.jsonc",
+      "discoveryPriority": 0,
+      "defaultProgress": false,
+      "interactive": false
+    }
+  }
+}

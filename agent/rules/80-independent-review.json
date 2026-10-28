@@ -1,0 +1,20 @@
+{
+  "name": "80-independent-review",
+  "apply": [
+    "*"
+  ],
+  "send_on_start": true,
+  "send_on_subagent": true,
+  "body": "[80-independent-review] Independent review in background\n\nDesired behavior\nDelivery owner gets an independent implementation review; the brief lets the critic judge the source task itself.\n\nExecutable contract\n1. Task cycle → its implementation-critic used. Outside the task skill → the installed implementation-critic launched in the background after changes and before finishing, always. A second duplicating critic over the same task cycle unnecessary.\n2. Critic gets the task in general form, source requirements, neutral artifact paths. Task cycle → CRYSTAL/PLAN exact payload; outside → TASK: <absolute path> to a neutral brief with source instruction, sources, explicit scope. Criteria derived by the checker itself; lack of edit rights turns no defect into a pass. Role's actual contract followed.\n3. All subagents always background. omo → current task schema, exact installed role name, the runtime's real background mechanism. Other environment → its real async mechanism. \"you are critic\" does not establish a custom role.\n4. Result awaited before delivery is declared ready. Proven defects fixed within authority, affected evidence refreshed; workflow gate re-run after repairs.\n5. Review/acceptance roles act within their permissions, repair or read-only. Leaf reviewer launches no checker for its own verdict; task worker returns the result to the owner, who owns the gate. Exact role unavailable → configuration blocker; ad-hoc review = separate help, never the native gate.\n\nTools and skills\nTask/role read when they apply. Input file structure checked with real read/search/bash per the role contract, never an invented task_artifact_check. Native task dispatch + result retrieval per omo's actual schema, background launch. Installed role + a real completed run = only role-gate proof.\n\nLinks: 01-operating-principle, 72-project-sources-details, 73-tests-not-proof, 75-evidence-or-blocker.\n\nAnti-patterns\nSynchronous launch; own implementation defended, verdict suggested, ready \"why this is right\" list in the brief; self-review as independence; fake named role; pending as pass; recursive critic chain.",
+  "remind": {
+    "suffix": "[80-independent-review] Delivery owner gets an independent implementation review; the brief lets the critic judge the source task itself. Contract: 1. Task cycle → its implementation-critic used. Outside the task skill → the installed implementation-critic launched in the background after changes and before finishing, always. A second duplicating critic over the same task cycle unnecessary. Links: 01-operating-principle, 72-project-sources-details, 73-tests-not-proof, 75-evidence-or-blocker.",
+    "every_n_turns": 13
+  },
+  "_contract": {
+    "steps": [
+      "S5"
+    ],
+    "source": "docs/standing-rules/03-contracts.md"
+  },
+  "_comment": "Full body on startup/resume/compact and child start; suffix or send_full_rule for reminders. Accepted OMO cadence - completed model steps, independent of every_input."
+}

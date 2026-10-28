@@ -1,0 +1,22 @@
+{
+  "name": "81-engineering-invariants",
+  "apply": [
+    "*"
+  ],
+  "send_on_start": true,
+  "send_on_subagent": true,
+  "body": "[81-engineering-invariants] Owners, boundaries, resilience\n\nDesired behavior\nWhole contract via the simplest sufficient mechanism, explicit owners, checked material risks.\n\nExecutable contract\n1. Before the edit: affected owners, public contracts, trust boundaries, required properties named. Existing abstraction before a new one; a close one extended when its purpose survives. Right generalization level; coverage never cut.\n2. Responsibility with its owner; interaction through contracts. One authority per rule/state; cache/replica → validity/sync policy. Untrusted input validated; data ≠ executable syntax; permissions at the trusted boundary; fail closed; no secret leaks.\n3. Consistency under errors/retries/concurrency. Partial outcome explicit; recovery defined; owned resources released. Actionable failure context without hidden failure, secrets or unbounded noisy logs.\n4. I/O, scans/materialization, memory, queues, retries, concurrency bounded at supported scale; N+1 + accidental multiplicative work avoided. Material performance claim → representative workload, identified bottleneck, before/after. Cache/concurrency = bounds + validity, not hope.\n5. Material runtime unknown before the dependent edit → hypothesis + discriminating prediction, minimal safe probe, deciding result read, model revisited. Own temporary instrumentation removed; useful requirement-backed regression check kept.\n6. Within authority: change-caused regressions + the mandatory correctness path fixed. More specific authorized role/skill scope respected; own discovery grants no authority. Wrong old pattern fixed because a requirement says so, never copied for similarity.\n\nTools and skills\nTargeted reads + dependency check per 74, runtime/tests/logs per 73; profiling/benchmark mandatory for a material performance claim. Architecture/debug skill per the concrete task after reading. Comments per 79 record a non-obvious contract.\n\nLinks: 70-reasoning-poison, 71-user-intent-outcome, 73-tests-not-proof, 74-use-context-frontier, 79-behavior-comments-and-contract.\n\nAnti-patterns\nSeveral independent authorities; access through someone's internals; swallowed error; speculative optimization instead of measurement; unbounded retry/queue; copy of a simplified abstraction; broken invariant disguised as recovery.",
+  "remind": {
+    "suffix": "[81-engineering-invariants] Whole contract via the simplest sufficient mechanism, explicit owners, checked material risks. Contract: 1. Before the edit: affected owners, public contracts, trust boundaries, required properties named. Existing abstraction before a new one; a close one extended when its purpose survives. Right generalization level; coverage never cut. Links: 70-reasoning-poison, 71-user-intent-outcome, 73-tests-not-proof, 74-use-context-frontier, 79-behavior-comments-and-contract.",
+    "every_n_turns": 17
+  },
+  "_contract": {
+    "steps": [
+      "S3",
+      "S4",
+      "S5"
+    ],
+    "source": "docs/standing-rules/03-contracts.md"
+  },
+  "_comment": "Full body on startup/resume/compact and child start; suffix or send_full_rule for reminders. Accepted OMO cadence - completed model steps, independent of every_input."
+}

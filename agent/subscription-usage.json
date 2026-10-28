@@ -1,0 +1,1 @@
+{"accounts":{"chatgpt-subscription/default":{"windows":[{"id":"codex:primary","label":"30d","usedPercent":0,"windowMinutes":43200,"resetsAt":"2026-11-27T14:52:43.000Z"}],"error":"auth stale - run /login","updatedAt":1793216573248,"nextAt":1793217323248,"plan":"free"}},"fetching":{}}

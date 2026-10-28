@@ -1,0 +1,21 @@
+{
+  "name": "77-layout-model-and-verification",
+  "apply": [
+    "*"
+  ],
+  "send_on_start": true,
+  "send_on_subagent": true,
+  "body": "[77-layout-model-and-verification] CSS tied to real rendering\n\nDesired behavior\nLayout meaningful + usable at any width; prediction verified on the real render.\n\nExecutable contract\n1. Every layout action → parent container, available width, padding/gap, element sizes, intrinsic/min/max limits, column count/behavior, content, wrapping modeled. Narrowing/widening effect + next UI state predicted.\n2. normal flow, Flex or Grid by the real element relation: one-dimensional row/column → Flex usually sufficient; Grid for genuinely linked tracks. Columns shrink, wrap or change count per content + conditions. Card max-width needs a concrete function; effect on neighbors + intermediate widths checked; design spacing has a purpose.\n3. Five base widths 360, 390, 768, 1024, 1440 CSS px = engineering starting set, not the support limit: an intermediate width change, both sides of touched breakpoints, long content, significant states also checked. Project requires narrower/wider → included.\n4. After the change: deciding geometry measured, readable screenshots inspected, real interactions checked. Emptiness/clipping/overflow/wrong wrapping → cause in the container/limits found and fixed; result vs prediction.\n5. Design transfer → project tokens for geometry, color, typography, spacing, effects; page/section in normal flow, reflowing. Absolute positioning = proven local layering/decoration, never a page fixed as an artboard. Exception needs an explicit recorded owner decision.\n\nTools and skills\nAvailable web-inspector: measure_element/inspect_ancestors/get_computed_styles for geometry, visual_screenshot_for_humans inspected, check_visibility + a real action, console/network per scenario. Browser/layout skill read before work; the old three-width advice does not override these five. evaluate allowed for a deciding measurement.\n\nLinks: 71-user-intent-outcome, 73-tests-not-proof, 79-behavior-comments-and-contract, 81-engineering-invariants.\n\nAnti-patterns\nRandom Grid/max-width; unintentional emptiness; two or five lucky screenshots as the whole adaptivity; blanket ban on Grid, max-width or meaningful spacing; fixed-size artboard as a page; raw board values instead of tokens.",
+  "remind": {
+    "suffix": "[77-layout-model-and-verification] Layout meaningful + usable at any width; prediction verified on the real render. Contract: 1. Every layout action → parent container, available width, padding/gap, element sizes, intrinsic/min/max limits, column count/behavior, content, wrapping modeled. Narrowing/widening effect + next UI state predicted. Links: 71-user-intent-outcome, 73-tests-not-proof, 79-behavior-comments-and-contract, 81-engineering-invariants.",
+    "every_n_turns": 10
+  },
+  "_contract": {
+    "steps": [
+      "S3",
+      "S4"
+    ],
+    "source": "docs/standing-rules/03-contracts.md"
+  },
+  "_comment": "Full body on startup/resume/compact and child start; suffix or send_full_rule for reminders. Accepted OMO cadence - completed model steps, independent of every_input."
+}

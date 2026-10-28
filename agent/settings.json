@@ -1,0 +1,33 @@
+{
+  "defaultProvider": "opencode-go",
+  "defaultModel": "deepseek-v4.1-flash",
+  "defaultThinkingLevel": "low",
+  "enableInstallTelemetry": false,
+  "enableSkillCommands": true,
+  "theme": "dark",
+  "compaction": {
+    "enabled": true,
+    "reserveTokens": 16384,
+    "keepRecentTokens": 30000
+  },
+  "packages": [
+    "/home/penis/.omo/agent/extensions"
+  ],
+  "extensions": [],
+  "retry": {
+    "modelFallback": true,
+    "fallbackChains": {
+      "minimax/MiniMax-M3.1-Flash": [
+        "minimax/MiniMax-M3.1-Flash-Preview"
+      ],
+      "minimax-openai/MiniMax-M3.1-Flash": [
+        "minimax-openai/MiniMax-M3.1-Flash-Preview"
+      ]
+    }
+  },
+  "permissionPreset": "full-access",
+  "disabledBuiltinExtensions": [
+    "compaction",
+    "gpt-apply-patch"
+  ]
+}

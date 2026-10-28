@@ -1,0 +1,21 @@
+{
+  "name": "17-user-correction-rebase",
+  "apply": [
+    "*"
+  ],
+  "send_on_start": true,
+  "send_on_subagent": true,
+  "body": "[17-user-correction-rebase] Compatible requirements kept on correction\n\nDesired behavior\nNew message = minimal semantic change of the active task.\n\nExecutable contract\n1. Message vs source goal: added, changed, cancelled? Everything compatible kept. Short correction of one entity suffices when context is clear; tone/profanity/emphasis cancel nothing by themselves.\n2. Invalidate only premises + actions really dependent on the corrected part. Abort/error → next step from the corrected task, not from the interrupted call's trajectory. Named system = first search boundary.\n3. Goal/durable requirement/scope/source of truth changed → durable control-task updated, complete compatible content kept. \"Do Y too\" adds a requirement when Y changes the result; a local order-of-checks command rewrites no statement.\n4. Unchanged requirement → continue, invent no record. Material ambiguity → deciding meaning clarified, rest of the work kept.\n\nTools and skills\ncontrol_task_get/set/patch on a real requirement change, full compatible content preserved. Unavailable → storage limitation reported, authorized work continued; confirmation bookkeeping = no gate.\n\nLinks: 01-operating-principle, 68-reason-in-user-language, 76-execution-progress-close-questions.\n\nAnti-patterns\nFull reset over one correction; requirement cancelled by emotional tone; every \"do Y too\" auto-excluded from the durable task; old disproved version revived after an error.",
+  "remind": {
+    "every_input": true,
+    "suffix": "[17-user-correction-rebase] New message = minimal semantic change of the active task. Contract: 1. Message vs source goal: added, changed, cancelled? Everything compatible kept. Short correction of one entity suffices when context is clear; tone/profanity/emphasis cancel nothing by themselves. Links: 01-operating-principle, 68-reason-in-user-language, 76-execution-progress-close-questions."
+  },
+  "_contract": {
+    "steps": [
+      "S1",
+      "S6"
+    ],
+    "source": "docs/standing-rules/03-contracts.md"
+  },
+  "_comment": "Full body on startup/resume/compact and child start; suffix or send_full_rule for reminders. Accepted OMO cadence - completed model steps, independent of every_input."
+}

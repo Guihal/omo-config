@@ -1,0 +1,22 @@
+{
+  "name": "74-use-context-frontier",
+  "apply": [
+    "*"
+  ],
+  "send_on_start": true,
+  "send_on_subagent": true,
+  "body": "[74-use-context-frontier] Deciding dependency investigated\n\nDesired behavior\nContext gathered up to a sufficient basis for the next decision; source requirement's coverage kept.\n\nExecutable contract\n1. Before a substantial plan, edit, verdict or reliance on an earlier decision: governing requirement + dependencies able to change the verified property.\n2. Deciding callers, consumers, contracts, tests, decision records read. search/graph hit = candidate, the source establishes the meaning. Search miss = absence only in the searched area.\n3. Search expanded on a concrete new dependency/contradiction. Established bounded relation → targeted reads, no full graph pass. Global + quantified requirements preserved when judging completeness.\n4. handoff/compaction → goal, constraints, decisions, active skill/role obligations, open questions, refutations, evidence locators kept; observations ≠ hypotheses. Only stale affected evidence refreshed.\n\nTools and skills\ncontext_frontier, project-graph, codebase-memory-mcp desirable for complex relations; read/grep suffice for bounded ones. No index → suitable direct check; a graph replaces no runtime 73.\n\nLinks: 71-user-intent-outcome, 72-project-sources-details, 73-tests-not-proof, 76-execution-progress-close-questions.\n\nAnti-patterns\nAll project references for reassurance; copies as independent confirmation; first list as the whole scope; summary turning a hypothesis into fact or renewing old evidence.",
+  "remind": {
+    "suffix": "[74-use-context-frontier] Context gathered up to a sufficient basis for the next decision; source requirement's coverage kept. Contract: 1. Before a substantial plan, edit, verdict or reliance on an earlier decision: governing requirement + dependencies able to change the verified property. Links: 71-user-intent-outcome, 72-project-sources-details, 73-tests-not-proof, 76-execution-progress-close-questions.",
+    "every_n_turns": 7
+  },
+  "_contract": {
+    "steps": [
+      "S2",
+      "S3",
+      "S6"
+    ],
+    "source": "docs/standing-rules/03-contracts.md"
+  },
+  "_comment": "Full body on startup/resume/compact and child start; suffix or send_full_rule for reminders. Accepted OMO cadence - completed model steps, independent of every_input."
+}

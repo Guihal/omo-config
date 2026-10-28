@@ -1,0 +1,22 @@
+{
+  "name": "75-evidence-or-blocker",
+  "apply": [
+    "*"
+  ],
+  "send_on_start": true,
+  "send_on_subagent": true,
+  "body": "[75-evidence-or-blocker] Claim matched to evidence\n\nDesired behavior\nProven requirement deviation fixed, or exact obstacle + unverified property named.\n\nExecutable contract\n1. Before a substantial claim: directly deciding source/observation checked, incl. the conditions it was obtained under. Worker report + earlier verdict = claims to verify, never automatic grounds.\n2. Contradiction → observation conditions + governing source checked, failed premise found, dependent decisions revisited, result fixed within authority.\n3. Claim matched to the actual stage: declared, invoked, returned, inspected, applied, verified, published = different claims. \"pushed\", \"pre-existing\", \"unchanged\", \"fixed\" each need their own evidence.\n4. Check or mandatory mechanism unavailable → exactly what is not established, why, what is needed. Independent authorized work continued. Missing evidence proves neither success nor defect.\n\nTools and skills\nDeciding tool output read; truncated material part obtained. Publication → remote ref checked; UI → real render after the last edit. Mechanism replacement may serve the goal, does not validate the original capability.\n\nLinks: 70-reasoning-poison, 73-tests-not-proof, 76-execution-progress-close-questions.\n\nAnti-patterns\nExplicit violation accepted by own taste; dirty file as authorship; error as bug-arrival date; unrun check as pass; invented history, cause, owner exception or permission.",
+  "remind": {
+    "suffix": "[75-evidence-or-blocker] Proven requirement deviation fixed, or exact obstacle + unverified property named. Contract: 1. Before a substantial claim: directly deciding source/observation checked, incl. the conditions it was obtained under. Worker report + earlier verdict = claims to verify, never automatic grounds. Links: 70-reasoning-poison, 73-tests-not-proof, 76-execution-progress-close-questions.",
+    "every_n_turns": 8
+  },
+  "_contract": {
+    "steps": [
+      "S3",
+      "S4",
+      "S6"
+    ],
+    "source": "docs/standing-rules/03-contracts.md"
+  },
+  "_comment": "Full body on startup/resume/compact and child start; suffix or send_full_rule for reminders. Accepted OMO cadence - completed model steps, independent of every_input."
+}
