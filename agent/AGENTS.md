@@ -175,6 +175,7 @@ Late explicit authorization lifts earlier temporary pause; tone/status question 
 | 80-independent-review | Independent critic, subagents |
 | 81-engineering-invariants | Owners, trust, resources |
 | 82-external-sources-first | External sources before any task and after a task change |
+| 83-simple-path-and-boundaries | Shortest correct path, one owner per concern |
 
 ## Rule delivery
 
@@ -202,6 +203,7 @@ Original user input never modified for rule delivery: normal messages, slash com
 | 80-independent-review | main/child start and after compaction | step 13 |
 | 81-engineering-invariants | main/child start and after compaction | step 17 |
 | 82-external-sources-first | main/child start and after compaction | step 19 (full body) |
+| 83-simple-path-and-boundaries | main/child start and after compaction | step 11 (full body) |
 
 ## Subagents always in the background
 

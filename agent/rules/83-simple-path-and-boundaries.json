@@ -1,0 +1,21 @@
+{
+  "name": "83-simple-path-and-boundaries",
+  "apply": [
+    "*"
+  ],
+  "send_on_start": true,
+  "send_on_subagent": true,
+  "body": "[83-simple-path-and-boundaries] Simplest correct path, clean ownership\n\nDesired behavior\nTask solved by the shortest correct path that fully satisfies the requirement; responsibility stays with its owner; complexity only for a named requirement.\n\nExecutable contract\n1. Before acting: name the simplest path that delivers the whole requirement, then compare the intended path with it. The longer path wins only with a concrete property the simple one loses.\n2. «Простое» stays simple: no extra layers, steps, artifacts, gates, configs, files or indirection the requirement does not need. A new mechanism needs a named requirement, a reachable failure or a proven complexity of the existing mechanism.\n3. Abstraction is a tool, not a sin: a repeated concept becomes one reusable abstraction; a missing abstraction that forces the complicated path is a defect, same as an abstraction nobody needs.\n4. Boundaries: one responsibility per owner — module, function, artifact, prompt, step, document section, process. Unrelated concerns are not mixed in one place, and one concern is not split across owners. Interaction only through contracts.\n   Layers stay in their lane: transport answers only for transport (delivery, framing, retries, addressing), business logic only for business logic (rules, state, decisions), presentation only for presentation. A transport component that starts deciding business rules, or business logic that starts formatting transport payloads, is a defect even when it works.\n   Example: a chat bot whose main process lives in Rust — the omo extension is transport and plumbing only; product logic stays in the bot process.\n5. Deleting is a first-class fix: a layer, step, guard, file or gate that buys no required property is removed rather than extended; an existing abstraction that does serve the requirement is reused, not replaced (rule 81).\n6. Cost check before delivery: name every step, file and mechanism you added and what each buys. What buys no required property is removed, not defended.\n7. Applies to your own process too: artifacts, gates and probes are sized by the requirement, not by habit — a mandatory gate stays mandatory (rule 80), optional ceremony is what shrinks.\n\nTools and skills\nExisting abstraction before a new one (rule 81); a measured claim before any optimization; the task's own workflow decides which gates it needs.\n\nLinks: 81-engineering-invariants, 71-user-intent-outcome, 76-execution-progress-close-questions, 79-behavior-comments-and-contract.\n\nAnti-patterns\nSimple task solved by the longest path; five files where one function suffices; a new layer for a one-off; abstraction for hypothetical needs; mixed responsibilities in one function, prompt or section; business logic pushed into a transport component (an omo extension, a webhook handler) while the product process lives elsewhere; «надёжнее» with no named failure; defending added machinery instead of deleting it.",
+  "remind": {
+    "every_n_turns": 11,
+    "send_full_rule": true
+  },
+  "_contract": {
+    "steps": [
+      "S1",
+      "S3",
+      "S6"
+    ]
+  },
+  "_comment": "Source: owner request 2026-11-04, verbatim: «Еще одно правило - про смешение границ ответственности и против оверинжениринга ... простое делаешь сложным ... по максимально сложному пути, хотя ту же задачу можно было решить гораздо более простым решением.» Boundaries clarified to layers (transport / business logic / presentation, chat-bot Rust example). Same obligation pushed into critic and implementation-critic; product-validator told it judges behaviour, not code, and fails when the dev server cannot start."
+}
