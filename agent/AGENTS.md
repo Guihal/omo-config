@@ -230,6 +230,15 @@ Board transfer, board values via project tokens, fixed-size artboard ban → "De
 - After every test delete what you started: test docker containers (`docker rm -f`), test/dev servers (ports you took), temp dirs/files; before finishing re-read background process + container list.
 - Status = signal, not proof: before justifying that work is impossible, re-check actual state (`docker ps`, `free -h`, `uptime`).
 
+## Git-репозиторий: откат через git, без мусора и бэкапов
+
+Рабочее пространство под git (`git rev-parse --show-toplevel`) → откат делает git, а не копии.
+
+- Бэкапы не плодить: никаких копий в `~/tmp`, `/tmp`, `*.bak`, `*.orig`, `*-backup`. Откат = `git diff` / `git checkout` / коммит.
+- Репозиторий не засорять служебным: пробные скрипты, дампы, логи, скрэтч-копии, скачанные архивы — вне дерева репо (`/home/penis/tmp`), после работы удалить; в конце сверить `git status`.
+- Коммитить только тронутые пути (`git add <path>`), не `git add -A`: в рабочем дереве бывают чужие незакоммиченные правки.
+- Грязный файл ≠ мой файл: перед коммитом смотреть `git status` и `git diff` и не выдавать чужое за своё.
+
 ## Reference and delivery
 
 omo rules: `~/.omo/agent/rules/*.json`. Contract docs: [standing-rules index](docs/standing-rules/README.md) → [desired behavior](docs/standing-rules/02-desired-behavior.md) → [contracts](docs/standing-rules/03-contracts.md) → [reference-file transfer acceptance](docs/standing-rules/e6-reference-transfer.md); ports - [existing-ports-contract](docs/existing-ports-contract.md). Machine inventory (`01-inventory.md`, `04-bindings.md`, `coverage.md`, `capabilities.json`) = mcode snapshot in `/home/penis/projects/mcode-extensions/docs/standing-rules/`.
