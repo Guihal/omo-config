@@ -129,6 +129,17 @@ Original understood directly, no intermediate translation.
 - Exact code/API names in original form; English technical term allowed where more precise. Material ambiguity → deciding original phrase.
 - Answer in user's language. Correction of meaning → rebase above; never make user restate a clear request; no obligatory verbatim echo.
 
+## Правила действуют на каждую роль
+
+Три обязательства ниже относятся к любой роли, включая встроенные роли рантайма, чьи промпты
+лежат не в `~/.pi/agent/agents` и этой установкой не редактируются:
+
+1. Решай задачу, а не артефакт: кристалл и план — инструмент, критерий — требуемое поведение.
+2. Не раздувай проверку: блокирует только нарушение требования, контракта, безопасности или
+   проверяемости результата; вкус, нейминг и «можно чище» — максимум строка, никогда не блокер.
+3. Не полируй семантику: вопрос один — решена ли задача; не блокируй на формулировках
+   кристалла и плана и на отсутствии артефакта, которого никто не просил.
+
 # Working order, registry and rule delivery (mcode → omo migration)
 
 Omo-native sections above stay in force; this block adds to them.
@@ -163,6 +174,7 @@ Late explicit authorization lifts earlier temporary pause; tone/status question 
 | 79-behavior-comments-and-contract | Behavior comments + contract |
 | 80-independent-review | Independent critic, subagents |
 | 81-engineering-invariants | Owners, trust, resources |
+| 82-external-sources-first | External sources before any task and after a task change |
 
 ## Rule delivery
 
@@ -189,10 +201,11 @@ Original user input never modified for rule delivery: normal messages, slash com
 | 79-behavior-comments-and-contract | main/child start and after compaction | step 12 |
 | 80-independent-review | main/child start and after compaction | step 13 |
 | 81-engineering-invariants | main/child start and after compaction | step 17 |
+| 82-external-sources-first | main/child start and after compaction | step 19 (full body) |
 
 ## Subagents always in the background
 
-**Every subagent runs on omo default model.** Default model read from omo configuration, passed explicitly to the child = same model as main agent (`opencode-go/deepseek-v4.1-flash`). Never pin another model, never accept another-vendor fallback, never launch Opus in any form. Child failed to start on that model = configuration error to report, not licence to substitute.
+**Model policy: DeepSeek everywhere.** Every agent, role, subagent, critic and gate runs on `opencode-go/deepseek-v4.1-flash` — the omo default model, passed explicitly to children, including every critic and implementation-critic gate. The earlier muse-spark-only restriction is superseded by the owner's decision of 2026-11-01 («переходим везде на дипсик»). Never pin another model, never accept another-vendor fallback, never launch Opus in any form. Child failed to start on that model = configuration error to report, not licence to substitute.
 
 **Every subagent starts in the background** - runtime's actual dispatch, exact installed role name, background launch, current call schema read. Role/skill launch payload + fresh-context + no-review-steering respected. Dispatch never replaced with "you are worker/critic".
 
@@ -222,3 +235,67 @@ Board transfer, board values via project tokens, fixed-size artboard ban → "De
 omo rules: `~/.omo/agent/rules/*.json`. Contract docs: [standing-rules index](docs/standing-rules/README.md) → [desired behavior](docs/standing-rules/02-desired-behavior.md) → [contracts](docs/standing-rules/03-contracts.md) → [reference-file transfer acceptance](docs/standing-rules/e6-reference-transfer.md); ports - [existing-ports-contract](docs/existing-ports-contract.md). Machine inventory (`01-inventory.md`, `04-bindings.md`, `coverage.md`, `capabilities.json`) = mcode snapshot in `/home/penis/projects/mcode-extensions/docs/standing-rules/`.
 
 Rule delivery mechanics: see "Rule delivery" above (one authoritative copy).
+
+## Mandatory live verification via web-inspector
+
+No verification counts without a live run: the claimed behavior is exercised in a
+running environment and observed through the веб-инспектор (rendered DOM,
+geometry, screenshots), not established from source, tests, or verdicts alone.
+Green gates prove only what they measure. A check that never opened the live
+surface proves nothing about it.
+
+## Delegating a task cycle — the call and its parameters
+
+Verified 2026-11-01 in this session. A full task cycle is ONE child that owns the whole cycle
+itself (crystal → planner → critic → worker → implementation-critic → product-validator →
+acceptance). Dispatch it with the `task` tool, not with the `subagent` tool.
+
+Parameters that matter:
+
+- `subagent_type: "delegate"` — the general agent, and the value that actually works here.
+  `subagent_type: "teamlead"` failed with `No available model for agent "teamlead" (attempted
+  none)` when spawned without a model, and the cycles it did run stopped on every hand-off
+  instead of carrying the far end of the task.
+- `model: "opencode-go/deepseek-v4.1-flash"` — provider and model name in one slash-separated
+  string. `model` is valid ONLY together with `subagent_type`; combined with `category` the call
+  is rejected, because category-routed tasks take their model from `omo.json`.
+- `run_in_background: true` — every subagent runs in the background. A foreground child blocks
+  the turn and dies with the session.
+- `prompt` — English, self-contained, absolute paths. It carries: the worktree path and branch,
+  the issue text VERBATIM in its original language marked as product copy, the current repo
+  state (what is committed, what is dirty and suspect), the requirements, the required
+  verification (unit tests + smokes on disposable stacks + a live web-inspector browser pass on
+  a seed stack), the teardown obligation, and the no-push / no-board-move constraint. Never pass
+  `cwd`: the worktree belongs in the prompt.
+- `task_summary` — one line, ≤80 chars, shown in the task footer; it says WHAT was delegated,
+  never the raw prompt.
+
+Verbatim call that started and kept running:
+
+```text
+task({
+  subagent_type: "delegate",
+  model: "opencode-go/deepseek-v4.1-flash",
+  run_in_background: true,
+  task_summary: "Full cycle #138 on deepseek-v4.1-flash",
+  prompt: "<English brief: worktree, branch, verbatim issue text as product copy,\n          repo state, requirements, verification, no push>"
+})
+```
+
+After the spawn:
+
+- `task_output({ task_id, mode: "status" })` — snapshot; `mode: "tail"` reads the recent
+  transcript, `mode: "full"` the whole one.
+- `task_send({ to: "st_...", message })` — steers a running child, revives a completed or parked
+  one.
+- `task_cancel({ task_id })` — terminal kill.
+- Raw state lives in `~/.omo/agent/task-state/tasks/<st_id>.json`. Its `updated_at` moves only on
+  recorded effects, so a stale timestamp is not proof of a stuck child: check `docker ps`, the
+  worktree's commits and the child's transcript mtime instead.
+
+The `subagent` tool (imported Pi roles) has a different schema — only `agent`, `async` and
+`task`; it rejects `task_summary` and `model`. Use `task` for omo cycle owners.
+
+One cycle = one worktree. Before relaunching: `task_cancel` the old owner, then clear what it
+left behind in its worktree (orphaned watch processes such as `tsc --watch`) and its test
+containers.

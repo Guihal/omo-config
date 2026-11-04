@@ -1,0 +1,21 @@
+{
+  "name": "82-external-sources-first",
+  "apply": [
+    "*"
+  ],
+  "send_on_start": true,
+  "send_on_subagent": true,
+  "body": "[82-external-sources-first] Every task starts from outside sources\n\nDesired behavior\nBefore any task, and again whenever the task statement changes, the external knowledge the task depends on is read from real sources (internet). Memory is not a source.\n\nExecutable contract\n1. Always, before the first action of any task: name which external knowledge the task depends on, then read it. «Простое», familiar or internal-looking is no exemption; the check always runs, only the volume scales with the task.\n2. Order inside the source step: governing instructions and the selected skill first (rule 72), external sources for the external part, project facts from the codebase. An external source never overrides project instructions or the user's requirement.\n3. Re-apply when the task statement changes: new goal, new entity, new scope, correction («а не», «стоп», «лучше», «ещё»), replaced subject, added requirement → external research repeats for the changed part only (rules 17, 76). A source read earlier stays valid only for the unchanged part.\n4. Search criteria — what to look for:\n   - external API/SDK/service/protocol → official vendor docs, reference, changelog, spec: exact version, endpoint/field/parameter names, auth scheme, error codes, deprecations.\n   - bug/failure/error text/stack trace/«не работает», «падает», «сломалось» → upstream issue tracker, release notes, known-issue lists, primary reproductions.\n   - best practices → authoritative guidance: vendor docs, standards/RFC, maintainer guides; blog/forum/answer only as a pointer to a primary source.\n   - documentation → the current version of the official doc, never a remembered shape.\n5. Read the deciding detail, not the first hit: version, exact names, preconditions, limits, deprecation notes.\n6. Record the deciding source (URL + what it establishes) next to the claim, fix or plan step; unsourced knowledge = hypothesis, labelled as such.\n7. Memory/source contradiction → source wins; dependent conclusions re-checked, not kept.\n8. Source unavailable or no network → state exactly which property stays unverified; never invent API behavior or a citation.\n9. No extra ceremony: this is a source step, not a new artifact, report or checklist (rule 18). Skip only a part already covered by a source read in this session for the same unchanged question.\n\nTools and skills\nWeb search + fetch of the exact URL; library docs via context7 when available; installed code and schemas for local facts. Official doc beats remembered API shape.\n\nLinks: 72-project-sources-details, 74-use-context-frontier, 73-tests-not-proof, 70-reasoning-poison, 75-evidence-or-blocker.\n\nAnti-patterns\nTask started without research; fix written from memory of an API; guessed endpoint/field/param; blog treated as spec; debugging by shotgun edits before reading documented behavior; research done once and not repeated after the task statement changed; an external doc used to overrule the user or the project instructions; «should work» without the source.",
+  "remind": {
+    "every_n_turns": 19,
+    "send_full_rule": true
+  },
+  "_contract": {
+    "steps": [
+      "S1",
+      "S2",
+      "S4"
+    ]
+  },
+  "_comment": "Source: owner request 2026-11-04, verbatim: «Докинь себе новое правило в inject-rules, что ты перед работой с любым внешним апи, или дебагом, всегда изучаешь внешние источники (интернет).» Scope per owner follow-ups, quoted in the crystal: always before any task and again when the task statement changes; search criteria named; permanent start delivery plus step cadence, full body on every delivery, no remind.when; existing rules keep priority, conflicts are resolved inside this new rule."
+}
